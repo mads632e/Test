@@ -10,6 +10,13 @@ namespace ConsoleApplication.Gethub.Test
   {
     static void Main(string[] args)
     {
+      Rocket moonRocket = new Rocket(50, 50);
+      Rocket marsRocket = new Rocket(25, 150);
+
+      Console.WriteLine(moonRocket.ToString());
+      Console.WriteLine(marsRocket.ToString());
+
+      Console.ReadLine();
     }
   }
 }
