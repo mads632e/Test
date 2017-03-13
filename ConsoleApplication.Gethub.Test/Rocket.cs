@@ -9,12 +9,16 @@ namespace ConsoleApplication.Gethub.Test
   class Rocket
   {
     private int speed;
-    private int fuel;
+    private double fuel;
+    private double burnRate;
+    private double kiloMeters;
+    private double timeOfFlight;
 
-    public Rocket(int speed, int fuel)
+    public Rocket(int speed, double fuel)
     {
       Speed = speed;
       Fuel = fuel;
+      BurnRate = speed / 50.0;
     }
 
     public int Speed
@@ -30,7 +34,7 @@ namespace ConsoleApplication.Gethub.Test
       }
     }
 
-    public int Fuel
+    public double Fuel
     {
       get
       {
@@ -41,6 +45,36 @@ namespace ConsoleApplication.Gethub.Test
       {
         fuel = value;
       }
+    }
+
+    public double BurnRate
+    {
+      get
+      {
+        return burnRate;
+      }
+
+      set
+      {
+        burnRate = value;
+      }
+    }
+
+    public void launche()
+    {
+      while(fuel > burnRate)
+      {
+        timeOfFlight += 1000 / speed;
+        fuel -= burnRate;
+        kiloMeters += 1;
+        Console.WriteLine($"Height: {kiloMeters}km");
+      }
+      if(fuel > 0)
+      {
+        kiloMeters += 1 / (burnRate / fuel);
+        Console.WriteLine($"Height: {kiloMeters}km");
+      }
+      Console.WriteLine($"Hours {timeOfFlight}");
     }
 
     public override string ToString()
